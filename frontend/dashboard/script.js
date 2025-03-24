@@ -85,11 +85,7 @@ function fetchProducts(uid) {
             renderBudgetChart(data.products);
         });
 }
-function clearLocalStorage() {
-    localStorage.clear(); // Clears all local storage data
-    // alert("Local storage has been cleared!");
-    window.location.href = "/"; // Reload the page to reflect changes
-}
+
 
 // Attach to a button click
 document.getElementById("logout-btn").addEventListener("click", clearLocalStorage);
@@ -111,6 +107,7 @@ function displayProducts(products) {
             <p><strong>Budget:</strong> $${product.budget}</p>
             <p class="hashtags">${product.hashtags.join(" ")}</p>
             <p class="keywords">${product.keywords.slice(0, 5).join(", ")}...</p>
+             <p><strong>Reel Idea:</strong> ${product.reel_idea ? product.reel_idea : "No reel idea available"}</p>
             <div class="influencer-list">
     ${Array.isArray(product.recommended_influencers) 
         ? product.recommended_influencers.map(influencer => `
@@ -220,3 +217,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+function clearLocalStorage() {
+    localStorage.clear(); // Clears all local storage data
+    // alert("Local storage has been cleared!");
+    window.location.href = "/"; // Reload the page to reflect changes
+}
